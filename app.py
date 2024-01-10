@@ -2,12 +2,14 @@ from flask import Flask, jsonify
 import requests
 from dotenv import load_dotenv
 import os
+from flasgger import Swagger
 
-load_dotenv()  # Carrega as variáveis de ambiente a partir do arquivo .env
+load_dotenv()
 
 app = Flask(__name__)
+Swagger(app)  # Inicializa o Swagger
 
-@app.route("/<cripto_name>")
+@app.route("/<cripto_name>", methods=["GET"])
 def btc_price(cripto_name):
     api_key = os.getenv("API_KEY")
     url = f"https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol={cripto_name}&market=USD&apikey={api_key}"
