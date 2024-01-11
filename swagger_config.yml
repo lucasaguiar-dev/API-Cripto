@@ -1,0 +1,47 @@
+swagger: '2.0'
+info:
+  title: 'Tracker Criptor API'
+  description: 'API for search criptos information.'
+  version: '1.0.0'
+host: 'localhost:5000'
+basePath: '/'
+schemes:
+  - 'http'
+
+parameters:
+  - name: cripto_name
+    in: path
+    type: string
+    required: true
+    description: The name of the Cripto.
+    example: "bitcoin"
+
+responses:
+  200:
+    description: Successful response with Critpo information.
+    schema:
+      type: object
+      properties:
+        symbol:
+          type: string
+          example: BTC
+        low:
+          type: string
+          example: 91.9650
+        high:
+          type: string
+          example: 92.0100
+        day reference:
+          type: string
+          example: '2024-01-10'
+        # Adicione outros campos conforme necessário
+  404:
+    description: Pokémon not found.
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Pokemon not found
+      
+
